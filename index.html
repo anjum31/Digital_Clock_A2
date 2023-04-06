@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Digital Clock</title>
+  </head>
+  <body>
+  
+    <div class="wrapper">
+      
+      <div class="box">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div id="time">00:00:00</div>
+      </div>
+      <div class="box">
+        <div id="am_pm"></div>
+        </div>
+    
+    
+
+
+    <script>
+      setInterval(() => {                 // setInterval() method used for calling a specified intervals  in millisecond 
+        let h = new Date().getHours();    //new Date().getHours(); used for return the specified hours in the current date according to the local time.
+        let m = new Date().getMinutes();  //new Date().getMinutes(); used for return the specified minutes in the current date according to the local time.  
+        let s = new Date().getSeconds();  //new new Date().getSeconds(); used for return the specified second in the current date according to the local time.
+        let ampm= h >= 12 ? "PM" : "AM";   //check if the hour is greater than or eqaual 12 or not.If it is greater or equal than 12,it is set to pm or else set to am.
+
+        if (h > 12) {
+          h = h - 12;                     //Convert hour to 24hr to 12hr format.
+        }
+
+        h = h < 10 ? "0" + h : h;         //if hour,minute and second is greater less than 10,It add a digit "0" before single digit .
+        m = m < 10 ? "0" + m : m;
+        s = s < 10 ? "0" + s : s;
+        const time=`${h} : ${m} : ${s} ${ampm}`;   // let time assinged by hour,minute and second  and ampm.
+        document.getElementById("time").innerHTML=time;
+        
+      });
+    </script>
+  </body>
+</html>
